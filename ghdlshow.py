@@ -11,6 +11,7 @@ import urllib.parse
 
 #pip packages
 import requests
+import tabulate
 
 def get_release_info(repo, token):
     headers = {}
@@ -67,13 +68,13 @@ for repo in config["repos"]:
     if info == False:
         print("repository \""+repo["author"]+"/"+repo["repo"]+"\" not found or private/private statistics")
     else:
-        print("download counts for \""+repo["author"]+"/"+repo["repo"]+"\" (only_latest: "+str(repo["only_latest"])+")")
+        print("download counts for \""+repo["author"]+"/"+repo["repo"]+"\" (only_latest: "+str(repo["only_latest"])+")\n")
         for key, tag in info.items():
-            print("\trelease name: "+tag["name"]+"\ttag: "+tag["tag"])
-            print("\tassets:\n")
+            print("release name: "+tag["name"]+"\ttag: "+tag["tag"])
+            table_data = []
             for name, dlcount in tag["assets"].items():
-                print("\t\tasset name: \""+name+"\"\tdownload count: "+str(dlcount))
+                table_data.append([name, dlcount])
                 total += dlcount
-            print("\n")
-        print("\ttotal downloads: "+str(total)+"\n")
+            print(tabulate.tabulate(table_data, headers=["asset name", "download count"], tablefmt='orgtbl')+"\n")
+        print("total downloads: "+str(total)+"\n")
     
