@@ -49,13 +49,16 @@ def get_release_info(repo, token):
                 tag["assets"] = assets
                 ret[tag["tag"]] = tag
     return ret
-    
 
-if os.path.isfile("./config.json") == False:
-    print("please create config.json")
+configfile = "./config.json"
+if len(sys.argv[1:]) == 1:
+    configfile = sys.argv[1:][0]
+
+if os.path.isfile(configfile) == False:
+    print("please create config.json or point to a valid config file with commandline argument")
     sys.exit(1)
 
-with open("./config.json", "r") as fh:
+with open(configfile, "r") as fh:
     config = json.loads(fh.read())
 
 for repo in config["repos"]:
