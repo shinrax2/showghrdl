@@ -1,0 +1,10 @@
+{
+	"github_api_key" : "",
+	"repos" : [
+			{
+				"author": "",
+				"repo": "",
+				"only_latest": true
+			}
+		]
+}
