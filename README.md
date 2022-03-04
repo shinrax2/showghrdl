@@ -6,4 +6,4 @@ this program downloads metadata of GitHub releases and shows download counts for
 # setup
 - rename "config.sample.json" to "config.json"
 - enter the data for the repositories you want to access
-- enter a github personal access token with the "repo" scope ([create one here](https://github.com/settings/tokens "create one here")) if you want to access your private repositories
+- enter a GitHub personal access token with the "repo" scope ([create one here](https://github.com/settings/tokens "create one here")) if you want to access your private repositories
