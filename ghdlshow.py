@@ -51,6 +51,7 @@ def get_release_info(repo, token):
                 ret[tag["tag"]] = tag
     return ret
 
+print("ghdlshow by shinrax2\n")
 configfile = "./config.json"
 if len(sys.argv[1:]) == 1:
     configfile = sys.argv[1:][0]
