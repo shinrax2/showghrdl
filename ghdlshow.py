@@ -24,7 +24,7 @@ def get_release_info(repo, token):
     data = json.loads(requests.get(url, headers=headers).content)
     ret = {}
     try:
-        if data["message"] == "Not Found":
+        if isinstance(data, str) == True and data["message"] == "Not Found":
             ret = False
     except KeyError:
         pass
