@@ -1,10 +1,11 @@
 {
-	"github_api_key" : "",
-	"repos" : [
+	"github_api_key": "",
+	"repos": [
 			{
 				"author": "",
 				"repo": "",
-				"only_latest": true
+				"only_latest": true,
+				"github_api_key": ""
 			}
 		]
 }

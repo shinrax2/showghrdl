@@ -14,6 +14,8 @@ import requests
 
 def get_release_info(repo, token):
     headers = {}
+    if repo["github_api_key"] != "":
+        token = repo["github_api_key"]
     if token != "":
         headers["Authorization"] = "token "+ token
     url = urllib.parse.urljoin(urllib.parse.urljoin(urllib.parse.urljoin("https://api.github.com/repos/" , repo["author"]+"/"), repo["repo"]+"/"), "releases")
