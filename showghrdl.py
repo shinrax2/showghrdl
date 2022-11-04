@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: UTF-8 -*-
 #
-# ghdlshow by shinrax2
+# showghrdl by shinrax2
 
 #built-in
 import sys
@@ -51,7 +51,7 @@ def get_release_info(repo, token):
                 ret[tag["tag"]] = tag
     return ret
 
-print("ghdlshow by shinrax2\n")
+print("showghrdl by shinrax2\n")
 configfile = "./config.json"
 if len(sys.argv[1:]) == 1:
     configfile = sys.argv[1:][0]
@@ -78,4 +78,4 @@ for repo in config["repos"]:
                 total += dlcount
             print(tabulate.tabulate(table_data, headers=["asset name", "download count"], tablefmt='orgtbl')+"\n")
         print("total downloads: "+str(total)+"\n")
-    
+input("press enter to exit")
