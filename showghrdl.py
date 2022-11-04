@@ -52,13 +52,19 @@ def get_release_info(repo, token):
     return ret
 
 print("showghrdl by shinrax2\n")
-configfile = "./config.json"
+default_configfile_names = ["./config.json", "./showghrdl.config.json"]
+config_not_found = True
 if len(sys.argv[1:]) == 1:
     configfile = sys.argv[1:][0]
-
-if os.path.isfile(configfile) == False:
-    print("please create config.json or point to a valid config file with commandline argument")
-    sys.exit(1)
+else:
+    for cfn in default_configfile_names:
+        if os.path.isfile(cfn) == True:
+            configfile = cfn
+            config_not_found = False
+            break
+    if config_not_found == True:
+        print("please create config.json or point to a valid config file with commandline argument")
+        sys.exit(1)
 
 with open(configfile, "r") as fh:
     config = json.loads(fh.read())
