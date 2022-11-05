@@ -8,6 +8,7 @@ import sys
 import os
 import json
 import urllib.parse
+import sys
 
 #pip packages
 import requests
@@ -72,18 +73,25 @@ def calc_history(history, info, repo):
             history = set_history(history, repo, tag, asset, dlcount)
     return history
 
+def getbasedir():
+    if getattr(sys, "frozen", False):
+        basedir = sys.executable
+    else:
+        basedir = __file__
+    return basedir
+
 print(f"showghrdl {VERSION} by shinrax2\n")
 default_configfile_names = ["config.json", "showghrdl.config.json"]
 config_not_found = True
-history_filename = os.path.abspath(os.path.join(os.path.dirname(__file__), "showghrdl.history.json"))
+history_filename = os.path.abspath(os.path.join(os.path.dirname(getbasedir()), "showghrdl.history.json"))
 
 #config
 if len(sys.argv[1:]) == 1:
     configfile = sys.argv[1:][0]
 else:
     for cfn in default_configfile_names:
-        if os.path.isfile(os.path.join(os.path.dirname(__file__), cfn)) == True:
-            configfile = os.path.abspath(os.path.join(os.path.dirname(__file__), cfn))
+        if os.path.isfile(os.path.join(os.path.dirname(getbasedir()), cfn)) == True:
+            configfile = os.path.abspath(os.path.join(os.path.dirname(getbasedir()), cfn))
             config_not_found = False
             break
     if config_not_found == True:
