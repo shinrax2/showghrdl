@@ -154,3 +154,5 @@ cython_debug/
 
 # project specific stuff
 config.json
+showghrdl.config.json
+showghrdl.history.json
